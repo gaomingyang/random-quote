@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Kurale&display=swap');
+
+.App {
+  text-align: center;
+
+  #quote-box{
+    font-size: 20px;
+    width: 500px;
+    margin: 20% auto;
+    background-color: #f0f0f0;
+  
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    padding: 40px;
+    min-width: 450px;
+    min-height: 100px;
+    
+    i{
+        font-size:1.3em;
+    }
+
+    #text{
+        font-size: 1.5em;
+        font-family: 'Kurale', serif;
+    }
+
+    #author {
+        text-align: right;
+        padding-top: 0.5em;
+        padding-bottom: 1em;
+    }
+
+    #new-quote {
+        border: 1px solid #ccc;
+        font-size: 0.8em;
+        padding: 10px 30px;
+        border-radius: 4px;
+        margin-bottom: 0.5em;
+        cursor: pointer;
+        &:hover{
+            background-color: darken($color: #ccc, $amount: 5%);
+        }
+    }
+
+    #share-bar{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+  }
+}
