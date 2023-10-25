@@ -21,6 +21,6 @@ code {
   justify-content: center;
   align-items: center;
   height: 100vh; /* 使body占据整个视口高度 */
-  background-color: #444;
-  color: #444;
+  /* background-color: #444; */
+  /* color: #444; */
 }
