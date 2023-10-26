@@ -27,30 +27,35 @@ function App() {
   const initQuote = {
     text:"A person who never made a mistake never tried anything new.",
     author:"Albert Einstein",
-    // text:"",
-    // author:"",
   }
   const [quoteInfo,setQuoteInfo] = useState(initQuote);
+  // const [quoteInfo,setQuoteInfo] = useState(null);
 
   //页面初始化时，请求接口获取所有数据
-  const dataSource = "https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json"
+  const dataSource = "https://raw.githubusercontent.com/gaomingyang/random-quote/master/public/quotes.json"
 
   //组件挂载时的操作
   useEffect(()=>{
     fetch(dataSource)
     .then((response) => {
-      // console.log("response:")
-      // console.log(response);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       return response.json();
     })
     .then( (data) => {
-      // console.log(data);
-      setQuotes(data.quotes)
+      let quotes = data.quotes;
+      setQuotes(quotes);
+
+      //set a random quote as init quote
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const randomQuote = quotes[randomIndex]
+      setQuoteInfo({
+        text:randomQuote.quote,
+        author:randomQuote.author,
+      })
     })
-  },[])
+  },[]) // 空依赖数组表示只在组件挂载时执行
 
   
   
@@ -80,11 +85,10 @@ function App() {
 
         <button id="new-quote" onClick={clickNewQuote}>New Quote</button>
         <div id="share-bar">
-          <a id="tweet-quote" href='https://twitter.com/intent/tweet' target="_blank" rel="noreferrer">
+          <a id="tweet-quote" href={`https://twitter.com/intent/tweet?hashtags=quotes&text=${quoteInfo.text}`} target="_blank" rel="noreferrer">
             <i className="fa-brands fa-square-x-twitter"></i>
           </a>
         </div>
-
       </div>
       <div id="footer">
         by <a href='https://github.com/gaomingyang/random-quote.git'>Mingyang</a>
