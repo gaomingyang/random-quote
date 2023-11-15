@@ -91,7 +91,7 @@ function App() {
         </div>
       </div>
       <div id="footer">
-        by <a href='https://github.com/gaomingyang/random-quote.git'>Mingyang</a>
+        by <a href='https://github.com/gaomingyang/random-quote'>Mingyang</a>
       </div>
     </div>
   );
